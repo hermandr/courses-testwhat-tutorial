@@ -1,5 +1,5 @@
 ---
-title       : Insert the chapter title here
+title       : Tutorial
 description : In order to contribute, create a new branch and submit a pull request.
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf

@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+    - "7"
+install: >
+    git clone https://github.com/datacamp/docwhat.git 
+    && cd docwhat
+    && npm install https://$GITHUB_TOKEN@github.com/datacamp/teach-parser.git
+    && npm install
+    && npm run build
+    && cd ..
+script:
+    - "./docwhat/bin/build_doc.js && rm -rf docwhat"
+    - "./.deploy-gh-pages.sh" 
+

@@ -99,9 +99,11 @@ success_msg("Great! Continue to the next exercise!")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:a77e4223ea
-## data.frame [TODO]
+## data.frame
 
 *** =instructions
+
+- Change Michael's location to be `'US'`.
 
 *** =hint
 
@@ -112,15 +114,62 @@ success_msg("Great! Continue to the next exercise!")
 
 *** =sample_code
 ```{r}
-
+dat <- data.frame(
+    name = c('Michael', 'Herve', 'Ludo', 'Filip'),
+    location = c('BE', 'BE', 'BE', 'BE')
+)
 ```
 
 *** =solution
 ```{r}
+dat <- data.frame(
+    name = c('Herve', 'Michael', 'Ludo', 'Filip'),
+    location = c('BE', 'US', 'BE', 'BE')
+)
 
 ```
 
 *** =sct
 ```{r}
+test_data_frame('dat')
 
+# alternatively
+ex() %>% 
+    check_object('dat') %>% 
+    {
+        check_column('name') %>% check_equal()
+        check_column('location') %>% check_equal()
+    }
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:75682023ce
+## list
+
+
+*** =instructions
+
+- change the "rocks" entry to `TRUE`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+person <- list(name = "Richie", rocks = 'maybe')
+```
+
+*** =solution
+```{r}
+person <- list(name = "Richie", rocks = TRUE)
+```
+
+*** =sct
+```{r}
+ex() %>% 
+    check_object('person') %>% 
+    check_element('rocks') %>% check_equal()
 ```

@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><title>docwhat</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><style>/* temporary rule, since teach-parser uses markdown-js,
+   which does not wrap code blocks in <pre>
+*/
+code {
+    white-space: pre-wrap;
+}
+
+.sidebar { 
+    position: fixed;
+    top: 61px;
+    width: 250px;
+}
+
+.with-sidebar {
+    position: relative;
+    margin-left: 290px;
+    max-width: 650px;
+}
+
+.menu-root {
+    list-style-type: none;
+    line-height: 1.8em;
+}
+
+.menu-sub {
+    list-style-type: none;
+    line-height: 1.8em;
+    padding-left: 1em;
+}
+
+.dc-lite-example {
+    border: solid lightgrey 1px;
+    /*
+    border-top: solid lightgrey 1px;
+    border-bottom: solid lightgrey 1px;
+    */
+    border-radius: 10px;
+    padding: 15px;
+    width: 657px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+.instructions h3 {
+    font-size: 20px;
+}
+
+/*
+.section-link {
+    font-size: .85em;
+}
+*/
+
+.chapter-link {
+    font-size: 1.15em;
+}
+
+a.active {
+    color: black;
+}
+
+.menu-root li:not(.active) .menu-sub{
+    display: none;
+}
+
+li.active .chapter-link {
+    color: black;
+}
+
+
+</style></head><body><h1>DocWhatttt</h1><div class="sidebar"><ul class="menu-root menu-chapters"><li><a class="chapter-link" href="testing-objects.html">Testing objects</a><ul class="menu-sub"><li><a class="section-link" href="#variable-assignment">variable assignment</a></li><li><a class="section-link" href="#variable-assignment-and-output">variable assignment and output</a></li><li><a class="section-link" href="#data.frame">data.frame</a></li><li><a class="section-link" href="#list">list</a></li></ul></li><li class="active"><a class="chapter-link" href="testing-functions-and-packages.html">Testing functions and packages</a><ul class="menu-sub"><li><a class="section-link" href="#function-call-[TODO]">function call [TODO]</a></li><li><a class="section-link" href="#function-call-result-[TODO]">function call result [TODO]</a></li><li><a class="section-link" href="#import-library-[TODO]">import library [TODO]</a></li><li><a class="section-link" href="#linear-model-w/-formula,-or-x-and-y-[TODO]">linear model w/ formula, or x and y [TODO]</a></li><li><a class="section-link" href="#function-pipe-[TODO]">function pipe [TODO]</a></li><li><a class="section-link" href="#plotting-w/-ggplot-[TODO]">plotting w/ ggplot [TODO]</a></li></ul></li><li><a class="chapter-link" href="control-flow.html">Control flow</a><ul class="menu-sub"><li><a class="section-link" href="#for-loop-[TODO]">for loop [TODO]</a></li><li><a class="section-link" href="#while-loop-[TODO]">while loop [TODO]</a></li><li><a class="section-link" href="#if-statement-within-for-loop">if statement within for loop</a></li><li><a class="section-link" href="#if-else-if-statement">if else if statement</a></li></ul></li><li><a class="chapter-link" href="user-defined-functions.html">User defined functions</a><ul class="menu-sub"><li><a class="section-link" href="#simple-function">simple function</a></li></ul></li></ul></div><div class="container with-sidebar" id="docwhat"><h2><a name="function-call-[TODO]"></a>function call [TODO]</h2><div class="assignment"></div><div class="dc-lite-example"><dc-lite-editor exercise-data="{&quot;chunkLines&quot;:[10,12,14,19,24,29],&quot;tags&quot;:[&quot;instructions&quot;,&quot;hint&quot;,&quot;pre_exercise_code&quot;,&quot;sample_code&quot;,&quot;solution&quot;,&quot;sct&quot;],&quot;number&quot;:1,&quot;type&quot;:&quot;NormalExercise&quot;,&quot;lang&quot;:&quot;r&quot;,&quot;xp&quot;:100,&quot;skills&quot;:[1],&quot;key&quot;:&quot;7e7c3382b0&quot;,&quot;title&quot;:&quot;function call [TODO]&quot;,&quot;assignment&quot;:&quot;&quot;,&quot;instructions&quot;:&quot;&quot;,&quot;hint&quot;:&quot;&quot;,&quot;pre_exercise_code&quot;:&quot;\n&quot;,&quot;sample_code&quot;:&quot;f &lt;- function(a, b, c=1) sum(a + b, c)\n&quot;,&quot;solution&quot;:&quot;f &lt;- function(a, b, c=1) sum(a + b, c)\n&quot;,&quot;sct_start_line&quot;:29,&quot;sct&quot;:&quot;# MC-NOTE: almost everyone ran into a puzzling issue w/test_function_definition not running body_test\n#          apparently test_function_definition only runs body_test IF function_test fails\n#          see https://github.com/datacamp/testwhat/wiki/test_function_definition\n\nf &lt;- ex() %&gt;% check_fun_def('f')\n\nf %&gt;% check_arguments()   # \&quot;missing third arg\&quot;\n\nbody &lt;- f %&gt;% check_body() %&gt;% {\n        check_function(., 'sum', index = 1, \&quot;no sum call\&quot;)\n        check_operator(., '+', index = 1, \&quot;no + operator\&quot;)\n    }\n\nf %&gt;% check_call(1, 2, 3)\n&quot;,&quot;parseInfo&quot;:{&quot;pre_exercise_code&quot;:{&quot;codeStart&quot;:15},&quot;sample_code&quot;:{&quot;codeStart&quot;:20},&quot;solution&quot;:{&quot;codeStart&quot;:25},&quot;sct&quot;:{&quot;codeStart&quot;:30}},&quot;anchor&quot;:&quot;function-call-[TODO]&quot;,&quot;url&quot;:&quot;testing-functions-and-packages.html/#function-call-[TODO]&quot;}"></dc-lite-editor><div class="instructions"><h3>Instructions</h3></div></div><h2><a name="function-call-result-[TODO]"></a>function call result [TODO]</h2><div class="assignment"></div><div class="dc-lite-example"><dc-lite-editor exercise-data="{&quot;chunkLines&quot;:[51,53,55,60,65,70],&quot;tags&quot;:[&quot;instructions&quot;,&quot;hint&quot;,&quot;pre_exercise_code&quot;,&quot;sample_code&quot;,&quot;solution&quot;,&quot;sct&quot;],&quot;number&quot;:2,&quot;type&quot;:&quot;NormalExercise&quot;,&quot;lang&quot;:&quot;r&quot;,&quot;xp&quot;:100,&quot;skills&quot;:[1],&quot;key&quot;:&quot;da6627a0ea&quot;,&quot;title&quot;:&quot;function call result [TODO]&quot;,&quot;assignment&quot;:&quot;&quot;,&quot;instructions&quot;:&quot;&quot;,&quot;hint&quot;:&quot;&quot;,&quot;pre_exercise_code&quot;:&quot;\n&quot;,&quot;sample_code&quot;:&quot;\n&quot;,&quot;solution&quot;:&quot;\n&quot;,&quot;sct_start_line&quot;:70,&quot;sct&quot;:&quot;\n&quot;,&quot;parseInfo&quot;:{&quot;pre_exercise_code&quot;:{&quot;codeStart&quot;:56},&quot;sample_code&quot;:{&quot;codeStart&quot;:61},&quot;solution&quot;:{&quot;codeStart&quot;:66},&quot;sct&quot;:{&quot;codeStart&quot;:71}},&quot;anchor&quot;:&quot;function-call-result-[TODO]&quot;,&quot;url&quot;:&quot;testing-functions-and-packages.html/#function-call-result-[TODO]&quot;}"></dc-lite-editor><div class="instructions"><h3>Instructions</h3></div></div><h2><a name="import-library-[TODO]"></a>import library [TODO]</h2><div class="assignment"></div><div class="dc-lite-example"><dc-lite-editor exercise-data="{&quot;chunkLines&quot;:[79,81,83,88,93,98],&quot;tags&quot;:[&quot;instructions&quot;,&quot;hint&quot;,&quot;pre_exercise_code&quot;,&quot;sample_code&quot;,&quot;solution&quot;,&quot;sct&quot;],&quot;number&quot;:3,&quot;type&quot;:&quot;NormalExercise&quot;,&quot;lang&quot;:&quot;r&quot;,&quot;xp&quot;:100,&quot;skills&quot;:[1],&quot;key&quot;:&quot;1e5ff3a55d&quot;,&quot;title&quot;:&quot;import library [TODO]&quot;,&quot;assignment&quot;:&quot;&quot;,&quot;instructions&quot;:&quot;&quot;,&quot;hint&quot;:&quot;&quot;,&quot;pre_exercise_code&quot;:&quot;\n&quot;,&quot;sample_code&quot;:&quot;\n&quot;,&quot;solution&quot;:&quot;\n&quot;,&quot;sct_start_line&quot;:98,&quot;sct&quot;:&quot;\n&quot;,&quot;parseInfo&quot;:{&quot;pre_exercise_code&quot;:{&quot;codeStart&quot;:84},&quot;sample_code&quot;:{&quot;codeStart&quot;:89},&quot;solution&quot;:{&quot;codeStart&quot;:94},&quot;sct&quot;:{&quot;codeStart&quot;:99}},&quot;anchor&quot;:&quot;import-library-[TODO]&quot;,&quot;url&quot;:&quot;testing-functions-and-packages.html/#import-library-[TODO]&quot;}"></dc-lite-editor><div class="instructions"><h3>Instructions</h3></div></div><h2><a name="linear-model-w/-formula,-or-x-and-y-[TODO]"></a>linear model w/ formula, or x and y [TODO]</h2><div class="assignment"><h4>pass 1</h4>
+
+<p><code>
+lm(d$x ~ d$y)
+</code></p>
+
+<h4>pass 2</h4>
+
+<p><code>
+with(d, lm(x ~ y))
+</code></p></div><div class="dc-lite-example"><dc-lite-editor exercise-data="{&quot;chunkLines&quot;:[121,126,131,136],&quot;tags&quot;:[&quot;pre_exercise_code&quot;,&quot;sample_code&quot;,&quot;solution&quot;,&quot;sct&quot;],&quot;number&quot;:4,&quot;type&quot;:&quot;NormalExercise&quot;,&quot;lang&quot;:&quot;r&quot;,&quot;xp&quot;:100,&quot;skills&quot;:[1],&quot;key&quot;:&quot;d866e9b1cd&quot;,&quot;title&quot;:&quot;linear model w/ formula, or x and y [TODO]&quot;,&quot;assignment&quot;:&quot;&lt;h4&gt;pass 1&lt;/h4&gt;\n\n&lt;p&gt;&lt;code&gt;\nlm(d$x ~ d$y)\n&lt;/code&gt;&lt;/p&gt;\n\n&lt;h4&gt;pass 2&lt;/h4&gt;\n\n&lt;p&gt;&lt;code&gt;\nwith(d, lm(x ~ y))\n&lt;/code&gt;&lt;/p&gt;&quot;,&quot;pre_exercise_code&quot;:&quot;d &lt;- data.frame(x = 1:10, y = 11:20)\n&quot;,&quot;sample_code&quot;:&quot;lm(x ~ y, data=d)\n&quot;,&quot;solution&quot;:&quot;lm(x ~ y, data=d)\n&quot;,&quot;sct_start_line&quot;:136,&quot;sct&quot;:&quot;func_test &lt;- . %&gt;% check_function('lm') %&gt;% check_arg('formula') %&gt;% check_equal()\n\ntest_or(\n    ex() %&gt;% func_test(),\n    ex() %&gt;% override_solution(\&quot;lm(d$x ~ d$y)\&quot;) %&gt;% func_test(),\n    ex() %&gt;% override_solution(\&quot;with(d, lm(x ~ y)\&quot;) %&gt;% func_test() \n    )\n    \n# MC-NOTE: another clever solution someone submitted!\ntest_or(\n  test_output_contains(\&quot;lm(x ~ y, data = d)\&quot;),\n  test_output_contains(\&quot;lm(d$x ~ d$y)\&quot;),\n  test_output_contains(\&quot;with(d, lm(x ~ y))\&quot;)\n)\n&quot;,&quot;parseInfo&quot;:{&quot;pre_exercise_code&quot;:{&quot;codeStart&quot;:122},&quot;sample_code&quot;:{&quot;codeStart&quot;:127},&quot;solution&quot;:{&quot;codeStart&quot;:132},&quot;sct&quot;:{&quot;codeStart&quot;:137}},&quot;anchor&quot;:&quot;linear-model-w/-formula,-or-x-and-y-[TODO]&quot;,&quot;url&quot;:&quot;testing-functions-and-packages.html/#linear-model-w/-formula,-or-x-and-y-[TODO]&quot;}"></dc-lite-editor><div class="instructions"><h3>Instructions</h3></div></div><h2><a name="function-pipe-[TODO]"></a>function pipe [TODO]</h2><div class="assignment"></div><div class="dc-lite-example"><dc-lite-editor exercise-data="{&quot;chunkLines&quot;:[158,160,162,167,172,177],&quot;tags&quot;:[&quot;instructions&quot;,&quot;hint&quot;,&quot;pre_exercise_code&quot;,&quot;sample_code&quot;,&quot;solution&quot;,&quot;sct&quot;],&quot;number&quot;:5,&quot;type&quot;:&quot;NormalExercise&quot;,&quot;lang&quot;:&quot;r&quot;,&quot;xp&quot;:100,&quot;skills&quot;:[1],&quot;key&quot;:&quot;ebdcbcbcf5&quot;,&quot;title&quot;:&quot;function pipe [TODO]&quot;,&quot;assignment&quot;:&quot;&quot;,&quot;instructions&quot;:&quot;&quot;,&quot;hint&quot;:&quot;&quot;,&quot;pre_exercise_code&quot;:&quot;\n&quot;,&quot;sample_code&quot;:&quot;\n&quot;,&quot;solution&quot;:&quot;\n&quot;,&quot;sct_start_line&quot;:177,&quot;sct&quot;:&quot;\n&quot;,&quot;parseInfo&quot;:{&quot;pre_exercise_code&quot;:{&quot;codeStart&quot;:163},&quot;sample_code&quot;:{&quot;codeStart&quot;:168},&quot;solution&quot;:{&quot;codeStart&quot;:173},&quot;sct&quot;:{&quot;codeStart&quot;:178}},&quot;anchor&quot;:&quot;function-pipe-[TODO]&quot;,&quot;url&quot;:&quot;testing-functions-and-packages.html/#function-pipe-[TODO]&quot;}"></dc-lite-editor><div class="instructions"><h3>Instructions</h3></div></div><h2><a name="plotting-w/-ggplot-[TODO]"></a>plotting w/ ggplot [TODO]</h2><div class="assignment"></div><div class="dc-lite-example"><dc-lite-editor exercise-data="{&quot;chunkLines&quot;:[186,188,190,195,200,205],&quot;tags&quot;:[&quot;instructions&quot;,&quot;hint&quot;,&quot;pre_exercise_code&quot;,&quot;sample_code&quot;,&quot;solution&quot;,&quot;sct&quot;],&quot;number&quot;:6,&quot;type&quot;:&quot;NormalExercise&quot;,&quot;lang&quot;:&quot;r&quot;,&quot;xp&quot;:100,&quot;skills&quot;:[1],&quot;key&quot;:&quot;41ab735489&quot;,&quot;title&quot;:&quot;plotting w/ ggplot [TODO]&quot;,&quot;assignment&quot;:&quot;&quot;,&quot;instructions&quot;:&quot;&quot;,&quot;hint&quot;:&quot;&quot;,&quot;pre_exercise_code&quot;:&quot;\n&quot;,&quot;sample_code&quot;:&quot;\n&quot;,&quot;solution&quot;:&quot;\n&quot;,&quot;sct_start_line&quot;:205,&quot;sct&quot;:&quot;\n&quot;,&quot;parseInfo&quot;:{&quot;pre_exercise_code&quot;:{&quot;codeStart&quot;:191},&quot;sample_code&quot;:{&quot;codeStart&quot;:196},&quot;solution&quot;:{&quot;codeStart&quot;:201},&quot;sct&quot;:{&quot;codeStart&quot;:206}},&quot;anchor&quot;:&quot;plotting-w/-ggplot-[TODO]&quot;,&quot;url&quot;:&quot;testing-functions-and-packages.html/#plotting-w/-ggplot-[TODO]&quot;}"></dc-lite-editor><div class="instructions"><h3>Instructions</h3></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/mode-python.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/mode-r.js"></script><script src="build.js"></script><script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script></body></html>

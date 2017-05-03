@@ -2,7 +2,7 @@
 title       : User defined functions
 description : Insert the chapter description here
 --- type:NormalExercise lang:r xp:100 skills:1 key:01de87a8ac
-## Simple functions
+## simple function
 
 **Example exercise below**
 

@@ -1,11 +1,11 @@
 ---
-title       : Tutorial
+title       : Testing objects
 description : In order to contribute, create a new branch and submit a pull request.
 attachments :
   slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
 --- type:NormalExercise xp:100 skills:1 key:5f200ffd43
-## Variable assignment 
+## variable assignment 
 
 A basic concept in (statistical) programming is called a **variable**. 
 
@@ -54,7 +54,7 @@ success_msg("Good job! Have you noticed that R does not print the value of a var
 ```
 
 --- type:NormalExercise xp:100 skills:1 key:c5944b90eb
-## Variable assignment and output
+## variable assignment and output
 
 Suppose you have a fruit basket with five apples. As a data analyst in training, you want to store the number of apples in a variable with the name `my_apples`. 
 
@@ -96,4 +96,31 @@ test_object("my_apples",
             incorrect_msg = "Make sure that you assign the correct value to `my_apples`.")
 test_output_contains("my_apples", incorrect_msg = "Have you explicitly told R to print out the `my_apples` variable to the console?")
 success_msg("Great! Continue to the next exercise!")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a77e4223ea
+## data.frame [TODO]
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```

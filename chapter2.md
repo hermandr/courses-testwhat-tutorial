@@ -75,7 +75,7 @@ f %>% check_call(1, 2, 3)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1e5ff3a55d
-## import library [TODO]
+## import library
 
 
 *** =instructions
@@ -89,17 +89,23 @@ f %>% check_call(1, 2, 3)
 
 *** =sample_code
 ```{r}
+# load the dplyr library
 
 ```
 
 *** =solution
 ```{r}
-
+# load the dplyr library
+library(dplyr)
 ```
 
 *** =sct
 ```{r}
-
+# This SCT has good default messages, but we customize them below
+# as an example.
+test_library_function('dplyr',
+    not_called_msg = "Try using the `library` function",
+    incorrect_msg  = "Did you use `library` with `'dplyr'`")
 ```
 
 

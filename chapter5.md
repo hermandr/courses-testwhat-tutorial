@@ -96,6 +96,9 @@ plot(y, ylim = y_lim)
 
 *** =sct
 ```{r}
+# make sure they defined y_lim
+ex() %>% check_object('y_lim')
+
 # make sure y_lim matches instructions
 ex() %>% check_expr('all(abs(y_lim) >= 3)')
 

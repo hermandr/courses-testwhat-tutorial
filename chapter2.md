@@ -115,19 +115,25 @@ test_library_function('dplyr',
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d866e9b1cd
-## linear model w/ formula, or x and y [TODO]
+## linear model w/ formula, or x and y
 
-#### pass 1 
+Some functions provide many different ways of doing the same thing.
+For example, the `lm` function--which fits a linear model--allows many
+different ways of specifying the model. For example, using some data.frame
+named `d` with columns `x` and `y`...
 
-```
-lm(d$x ~ d$y)
-```
+* a formula: `lm(d$y ~ d$x)`
+* a formula and data arg: `lm(y ~ x, data = d)`
+* the with function: `with(d, lm(y ~ x))`
 
-#### pass 2
+If all these commands produced the same output, then we use `check_result()`.
+However, because the specific command used is printed in the output, the three
+ways of specifying `lm` output different results to the console.
 
-```
-with(d, lm(x ~ y))
-```
+Similarly, if the exercise had students assigned the result of `lm` to a variable,
+such as `fit`, then we could use something like `check_expr("coef(fit)")`.
+
+The exercise below shows how to accept all of these variants, use `override_solution`.
 
 *** =pre_exercise_code
 ```{r}
@@ -136,12 +142,12 @@ d <- data.frame(x = 1:10, y = 11:20)
 
 *** =sample_code
 ```{r}
-lm(x ~ y, data=d)
+lm(y ~ x, data=d)
 ```
 
 *** =solution
 ```{r}
-lm(x ~ y, data=d)
+lm(y ~ x, data=d)
 ```
 
 *** =sct
@@ -150,15 +156,15 @@ func_test <- . %>% check_function('lm') %>% check_arg('formula') %>% check_equal
 
 test_or(
     ex() %>% func_test(),
-    ex() %>% override_solution("lm(d$x ~ d$y)") %>% func_test(),
-    ex() %>% override_solution("with(d, lm(x ~ y)") %>% func_test() 
+    ex() %>% override_solution("lm(d$y ~ d$x)") %>% func_test(),
+    ex() %>% override_solution("with(d, lm(y ~ x)") %>% func_test() 
     )
     
-# MC-NOTE: another clever solution someone submitted!
+# NOTE: another clever solution someone submitted!
 test_or(
-  test_output_contains("lm(x ~ y, data = d)"),
-  test_output_contains("lm(d$x ~ d$y)"),
-  test_output_contains("with(d, lm(x ~ y))")
+  ex() %>% check_output_expr("lm(y ~ x, data = d)"),
+  ex() %>% check_output_expr("lm(d$y ~ d$x)"),
+  ex() %>% check_output_expr("with(d, lm(y ~ x))")
 )
 ```
 

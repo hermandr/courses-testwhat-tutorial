@@ -43,7 +43,7 @@ ex() %>%
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:da6627a0ea
-## function call result [TODO]
+## function call result
 
 
 *** =instructions
@@ -57,17 +57,24 @@ ex() %>%
 
 *** =sample_code
 ```{r}
+# use the sum function to add the numbers 1, 2, 3
 
 ```
 
 *** =solution
 ```{r}
-
+# use the sum function to add the numbers 1, 2, 3
+sum(1:3)
 ```
 
 *** =sct
 ```{r}
-
+# test the result of calling sum
+# note that this will accept a range of answers, such as
+#   * sum(1:3)
+#   * sum(1,2,3)
+#   * a <- 1:3; sum(a)
+ex() %>% check_function('sum') %>% check_result()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1e5ff3a55d

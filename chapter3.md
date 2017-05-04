@@ -52,7 +52,7 @@ for_loop %>% check_body() %>%
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3d6180e2bc
-## while loop [TODO]
+## while loop
 
 
 *** =instructions
@@ -66,16 +66,42 @@ for_loop %>% check_body() %>%
 
 *** =sample_code
 ```{r}
-
+x <- 0
+while ___ {
+ ___ <- ___
+ print(x)
+}
 ```
 
 *** =solution
 ```{r}
-
+x <- 0
+while(x < 18) {
+ x <- x + 5
+ print(x)
+}
 ```
 
 *** =sct
 ```{r}
+w <- check_while(1)
+
+# check condition statement
+w %>% check_cond() %>% check_code(c("< 18", "18 >"))
+
+# check body, see if called print with some argument x
+# note: don't check actual value of x, since it changes
+#       during the running of the loop
+w %>% check_body() %>% {
+    check_code(., c("x + 5", "5 + x"))
+    check_function(., "print") %>% check_arg("x")
+    }
+
+# check final value of x 
+# (note, no matter where this SCT is it will always check the final value...)
+ex() %>% 
+    check_object('x') %>%
+    check_equal("Is your value of `x` 20 after running the loop?")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:923940980c

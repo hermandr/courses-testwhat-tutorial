@@ -33,8 +33,6 @@ Look at how the value 4 was assigned to `my_variable` in the exercise's assignme
 # Assign the value 42 to x
 x <- 
 
-# Print out the value of the variable x
-x
 ```
 
 *** =solution
@@ -42,15 +40,20 @@ x
 # Assign the value 42 to x
 x <- 42
 
-# Print out the value of the variable x
-x
 ```
 
 *** =sct
 ```{r}
-test_object("x", undefined_msg = "Make sure to define a variable `x`.",
-            incorrect_msg = "Make sure that you assign the correct value to `x`.") 
-success_msg("Good job! Have you noticed that R does not print the value of a variable to the console when you did the assignment? `x <- 42` did not generate any output, because R assumes that you will be needing this variable in the future. Otherwise you wouldn't have stored the value in a variable in the first place, right? Proceed to the next exercise!")
+msg_undefined = "Make sure to define a variable `x`."
+msg_incorrect = "Make sure that you assign the correct value to `x`."
+test_object("x", 
+            undefined_msg = msg_undefined,
+            incorrect_msg = msg_incorrect) 
+
+# alternative to test_object above
+ex() %>% check_object('x', msg_undefined) %>% check_equal(msg_incorrect)
+
+success_msg("Good job!")
 ```
 
 --- type:NormalExercise xp:100 skills:1 key:c5944b90eb
@@ -91,10 +94,12 @@ my_apples
 
 *** =sct
 ```{r}
-test_object("my_apples", 
-            undefined_msg = "Please make sure to define a variable `my_apples`.",
-            incorrect_msg = "Make sure that you assign the correct value to `my_apples`.")
-test_output_contains("my_apples", incorrect_msg = "Have you explicitly told R to print out the `my_apples` variable to the console?")
+# for illustration, we only check that my_apples was defined
+ex() %>% check_object('my_apples')
+
+# check that the value of my_apples was printed as output
+ex() %>% check_output_expr("my_apples")
+#puttest_output_contains("my_apples", incorrect_msg = "Have you explicitly told R to print out the `my_apples` variable to the console?")
 success_msg("Great! Continue to the next exercise!")
 ```
 
@@ -172,4 +177,7 @@ person <- list(name = "Richie", rocks = TRUE)
 ex() %>% 
     check_object('person') %>% 
     check_element('rocks') %>% check_equal()
+    
+# could check entire list by leaving off check_element...
+# ex() %>% check_object('person') %>% check_equal()
 ```

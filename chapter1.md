@@ -115,7 +115,7 @@ success_msg("Great! Continue to the next exercise!")
 *** =sample_code
 ```{r}
 dat <- data.frame(
-    name = c('Michael', 'Herve', 'Ludo', 'Filip'),
+    name = c('Herve', 'Michael', 'Ludo', 'Filip'),
     location = c('BE', 'BE', 'BE', 'BE')
 )
 ```

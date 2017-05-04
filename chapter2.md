@@ -4,7 +4,7 @@ description : Insert the chapter description here
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7e7c3382b0
-## function call [TODO]
+## function call
 
 
 *** =instructions
@@ -18,32 +18,28 @@ description : Insert the chapter description here
 
 *** =sample_code
 ```{r}
-f <- function(a, b, c=1) sum(a + b, c)
+# include Michael's location as 'US' in the data.frame
+data.frame(
+    name = c('Herve', 'Michael', 'Ludo', 'Filip'), 
+    location = c('BE', 'BE', 'BE')
+    )
 ```
 
 *** =solution
 ```{r}
-f <- function(a, b, c=1) sum(a + b, c)
+# include Michael's location as 'US' in the data.frame
+data.frame(
+    name = c('Herve', 'Michael', 'Ludo', 'Filip'), 
+    location = c('BE', 'US', 'BE', 'BE')
+    )
 ```
 
 *** =sct
 ```{r}
-f <- ex() %>% check_fun_def('f')
-
-f %>% check_arguments()   # e.g. will report "missing third arg"
-
-body <- f %>% check_body() %>% {
-        check_function(., 'sum', index = 1, "no sum call")
-        check_operator(., '+', index = 1, "no + operator")
-    }
-
-f %>% check_call(1, 2, 3)
-
-# NOTE: almost everyone ran into a puzzling issue w/test_function_definition not running body_test
-#       apparently test_function_definition only runs body_test IF function_test fails
-#       see https://github.com/datacamp/testwhat/wiki/test_function_definition
-
-
+ex() %>% 
+    check_function('data.frame') %>%
+    check_arg('location') %>%
+    check_equal()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:da6627a0ea

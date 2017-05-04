@@ -3,7 +3,7 @@ title       : Control flow
 description : Insert the chapter description here
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:744128343a
-## for loop [TODO]
+## for loop
 
 
 *** =instructions
@@ -17,17 +17,36 @@ description : Insert the chapter description here
 
 *** =sample_code
 ```{r}
+# write a for loop that loops 5 times,
+# printing "hurray!" each loop
+
+
 
 ```
 
 *** =solution
 ```{r}
-
+# write a for loop that loops 5 times,
+# printing "hurray!" each loop
+for(i in 1:5) {
+ print("hurray!") 
+}
 ```
 
 *** =sct
 ```{r}
+for_loop <- ex() %>% check_for()
 
+# check condition ("i in 1:5" in the solution)
+# note that check_code might be too stringent, since someone could
+# create a variable, e.g. a <- 1:5, and give that to the for loop
+for_loop %>% check_cond() %>%
+             check_code("in 1:5", fixed = TRUE)
+
+# check body (everything between { and } in the solution)
+for_loop %>% check_body() %>%
+             check_function('print') %>%
+             check_arg('x') %>% check_equal()
 ```
 
 

@@ -28,13 +28,9 @@ f <- function(a, b, c=1) sum(a + b, c)
 
 *** =sct
 ```{r}
-# MC-NOTE: almost everyone ran into a puzzling issue w/test_function_definition not running body_test
-#          apparently test_function_definition only runs body_test IF function_test fails
-#          see https://github.com/datacamp/testwhat/wiki/test_function_definition
-
 f <- ex() %>% check_fun_def('f')
 
-f %>% check_arguments()   # "missing third arg"
+f %>% check_arguments()   # e.g. will report "missing third arg"
 
 body <- f %>% check_body() %>% {
         check_function(., 'sum', index = 1, "no sum call")
@@ -42,6 +38,12 @@ body <- f %>% check_body() %>% {
     }
 
 f %>% check_call(1, 2, 3)
+
+# NOTE: almost everyone ran into a puzzling issue w/test_function_definition not running body_test
+#       apparently test_function_definition only runs body_test IF function_test fails
+#       see https://github.com/datacamp/testwhat/wiki/test_function_definition
+
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:da6627a0ea
@@ -161,26 +163,82 @@ test_or(
 
 *** =pre_exercise_code
 ```{r}
-
+library(gapminder)
+library(ggplot2)
+library(dplyr)
+gap2007 <- filter(gapminder, year == 2007)
 ```
 
 *** =sample_code
 ```{r}
+# Compute groupwise measures of spread
+gap2007 %>%
+  group_by(___) %>%
+  summarize(___,
+            ___,
+            ___)
 
+# Generate overlaid density plots
+gap2007 %>%
+  ggplot(aes(x = ___, fill = ___)) +
+  geom_density(alpha = 0.3)
 ```
 
 *** =solution
 ```{r}
+# Compute groupwise measures of spread
+gap2007 %>%
+  group_by(continent) %>%
+  summarize(sd(lifeExp),
+            IQR(lifeExp),
+            n())
 
+# Generate overlaid density plots
+gap2007 %>%
+  ggplot(aes(x = lifeExp, fill = continent)) +
+  geom_density(alpha = 0.3)
 ```
 
 *** =sct
 ```{r}
 
+ex() %>% check_function('group_by') %>% check_arg('.data') %>% check_equal()
+ex() %>% check_function('summarize') %>% {
+    # Note checking the .data arg for calls later down a pipe can get complex
+    # and counter-intuitive...
+    # check_arg(., '.data') %>% check_equal()
+    
+    # Checking that certain function calls were used in summarize works, though.
+    # can't call check_equal() here either, because internally dplyr runs 
+    # sd(lifeExpr) within the group2007 data.frame. e.g. with(group2007, sd(lifeExpr))
+    check_function(., 'sd')
+    # However, we can check that the student passed only lifeExp, using
+    # `check_code('^lifeExpr$')`. The ^ means the start of a line of code, and
+    # $ means the end of a line (so tests that lifeExp is the only code entered)
+    check_function(., 'IQR') %>% check_code('^lifeExp$')
+    
+    check_function(., 'n')
+    }
+
+# Note, here is an alternative approach using test_correct
+
+#test_correct({
+#    test_output_contains("gap2007 %>% group_by(continent) %>% summarize(sd(lifeExp), IQR(lifeExp), n())", incorrect_msg = "First group by `continent` using `group_by()`, then calculate the `sd()`, `IQR()`, and `n()` of `lifeExp` within your `summarize()` call. Don't name the new columns.")
+#    }, {
+#    test_function("group_by", incorrect_msg = "Don't forget to `group_by()` the `continent` variable.")
+#    test_function_result("summarize", incorrect_msg = "Calculate the `sd()`, `IQR()`, and `n()` of `lifeExp` inside your call to `summarize()`. Don't name the new columns.")
+#})
+
+#test_student_typed("gap2007 %>%", not_typed_msg = "Did you pipe in the `gap2007` dataset to your `ggplot()` call?", times = 2)
+#test_student_typed("ggplot(aes(x = lifeExp, fill = continent))", not_typed_msg = "Did you map `lifeExp` to `x` and `continent` to `fill` in `aes()` within your `ggplot()` call?")
+#test_function("geom_density", "alpha")
+
+test_error()
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:41ab735489
-## plotting w/ ggplot [TODO]
+## plotting w/ ggplot
 
 
 *** =instructions
@@ -189,20 +247,36 @@ test_or(
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
 
 ```
 
 *** =sample_code
 ```{r}
-
+# Scatterplot with regression line
+ggplot(data = ___, aes(x = ___, y = ___)) + 
+  ___ + 
+  ___(method = ___, se = FALSE)
 ```
 
 *** =solution
 ```{r}
-
+# Scatterplot with regression line
+ggplot(data = mtcars, aes(x = wt, y = mpg)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
 ```
 
 *** =sct
 ```{r}
+msg_missing <- "Did you add the `+` operator after your `ggplot()` and `geom_point()` calls?"
+ex() %>% check_code("+", times = 2, fixed = TRUE, missing_msg = msg_missing)
+
+# Note: test_ggplot is a giant SCT, designed to run a set of all-encompassing checks.
+#       However, there is not a way to break it up into smaller tests, using simpler
+#       check_* functions.
+test_ggplot(1)
+
+test_error()
 
 ```

@@ -154,7 +154,7 @@ test_or(
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ebdcbcbcf5
-## function pipe [TODO]
+## function pipe
 
 
 *** =instructions
@@ -220,20 +220,16 @@ ex() %>% check_function('summarize') %>% {
     check_function(., 'n')
     }
 
-# Note, here is an alternative approach using test_correct
-
-#test_correct({
-#    test_output_contains("gap2007 %>% group_by(continent) %>% summarize(sd(lifeExp), IQR(lifeExp), n())", incorrect_msg = "First group by `continent` using `group_by()`, then calculate the `sd()`, `IQR()`, and `n()` of `lifeExp` within your `summarize()` call. Don't name the new columns.")
-#    }, {
-#    test_function("group_by", incorrect_msg = "Don't forget to `group_by()` the `continent` variable.")
-#    test_function_result("summarize", incorrect_msg = "Calculate the `sd()`, `IQR()`, and `n()` of `lifeExp` inside your call to `summarize()`. Don't name the new columns.")
-#})
-
-#test_student_typed("gap2007 %>%", not_typed_msg = "Did you pipe in the `gap2007` dataset to your `ggplot()` call?", times = 2)
-#test_student_typed("ggplot(aes(x = lifeExp, fill = continent))", not_typed_msg = "Did you map `lifeExp` to `x` and `continent` to `fill` in `aes()` within your `ggplot()` call?")
-#test_function("geom_density", "alpha")
-
 test_error()
+
+# NOTE: Could also wrap in a test_correct. For example...
+
+#output_code = "gap2007 %>% group_by(continent) %>% summarize(sd(lifeExp), IQR(lifeExp), n())"
+#test_correct(ex() %>% check_output_expr(output_code), {
+#    ex() %>% check_function('group_by') %>% check_arg('.data') %>% check_equal()
+#    ex() %>% check_function('summarize')
+#    #etc...
+#    })
 
 ```
 

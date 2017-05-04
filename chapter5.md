@@ -50,8 +50,8 @@ ex() %>% check_expr('set.seed(42); rnorm(100)') %>% check_result() %>% check_equ
 ## test piece of code flexibly
 
 When code is not stored as a variable, `testwhat` is limited in how it can evaluate that code.
-For example if we have `a <- 1:10` it can be flexibly tested using `check_expr`. If we just want
-the max of a to be `10`, then we can use `check_expr("max(a) == 10")`.
+For example if we have `a <- 1:10` it can be flexibly tested using `check_expr`. In this case,
+if we want the max of a to be `10`, then we can use `check_expr("max(a) == 10")`.
 
 Notice that using `check_expr` involved referring to `a`. How could we perform a similar test
 if we only had `1:10`? In general, we can't. When creating an exercise sometimes it is useful

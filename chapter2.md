@@ -74,7 +74,7 @@ sum(1:3)
 #   * sum(1:3)
 #   * sum(1,2,3)
 #   * a <- 1:3; sum(a)
-ex() %>% check_function('sum') %>% check_result()
+ex() %>% check_function('sum') %>% check_result() %>% check_equal()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1e5ff3a55d

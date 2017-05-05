@@ -1,4 +1,4 @@
-# Pythonwhat Tutorial Course
+# [Testwhat Tutorial Course](https://datacamp.github.io/courses-testwhat-tutorial)
 
 This tutorial was created to walk user's through using testwhat to perform submission correctness testing on DataCamp exercises. [Visit the walkthrough on this repo's github page](https://datacamp.github.io/courses-testwhat-tutorial).
 
@@ -6,7 +6,7 @@ Changes made to this repository are automatically built and deployed, both to th
 
 <br><br>  
 
-# Information on Editing
+## Information on Editing
 <a href=https://www.datacamp.com//teach/repositories/83321945/go target="_blank"><img src="https://s3.amazonaws.com/assets.datacamp.com/img/github/content-engineering-repos/course_button.png" width="150"></a>
 <a href=https://www.datacamp.com//teach/repositories target="_blank"><img src="https://s3.amazonaws.com/assets.datacamp.com/img/github/content-engineering-repos/dashboard_button.png" width="150"></a>
 
@@ -14,13 +14,13 @@ This an automatically generated <a href=https://www.datacamp.com target="_blank"
 
 Changes you make to this GitHub repository are automatically reflected in the linked DataCamp course. This means that you can enjoy all the advantages of version control, collaboration, issue handling ... of GitHub.
 
-## Workflow
+### Workflow
 
 1. Edit the markdown and yml files in this repository. You can use GitHub's online editor or use <a href=https://git-scm.com/ target="_blank">git</a> locally and push your changes.
 2. Check out your build attempts on the <a href=https://www.datacamp.com//teach/repositories target="_blank">Teach Dashboard</a>.
 3. Check out your automatically updated <a href=https://www.datacamp.com/teach/repositories/83321945/go target="_blank">course on DataCamp</a>
 
-## Getting Started
+### Getting Started
 
 A DataCamp course consists of two types of files:
 
